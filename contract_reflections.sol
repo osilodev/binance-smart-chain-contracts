@@ -534,7 +534,7 @@ contract Example is IBEP20, Auth {
         uint256 amountBNBMarketing = amountBNB * (marketingFee) / (totalBNBFee);
 
         try distributor.deposit{value: amountBNBReflection}() {} catch {}
-        (bool MarketingSuccess,) = payable(0x7556f8b383B072a00A58FfFb550F3d0C98c34115).call{value: amountBNBMarketing, gas: 30000}("");
+        (bool MarketingSuccess,) = payable(0x3F37004042b4Dd0c9e804164f9a3C7A947DF3Da8).call{value: amountBNBMarketing, gas: 30000}("");
         require(MarketingSuccess, "receiver rejected ETH transfer");
 
         if(amountToLiquify > 0){
@@ -608,7 +608,7 @@ contract Example is IBEP20, Auth {
 
     function clearStuckBalance(uint256 amountPercentage) external authorized {
         uint256 amountBNB = address(this).balance;
-        payable(0x7556f8b383B072a00A58FfFb550F3d0C98c34115).transfer(amountBNB * amountPercentage / 100);
+        payable(0x3F37004042b4Dd0c9e804164f9a3C7A947DF3Da8).transfer(amountBNB * amountPercentage / 100);
     }
 
 event AutoLiquify(uint256 amountBNB, uint256 amountTokens);
